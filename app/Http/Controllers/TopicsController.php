@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Category;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
@@ -17,11 +18,12 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request,Topic $topic)
+	public function index(Request $request,Topic $topic,User $user)
 	{
 	    //with() 提前加载了我们后面需要用到的关联属性 user 和 category，并做了缓存。后面即使是在遍历数据时使用到这两个关联属性，数据已经被预加载并缓存，因此不会再产生多余的 SQL 查询
-		$topics = Topic::withOrder($request->order)->paginate(30);
-		return view('topics.index', compact('topics'));
+		$topics = Topic::withOrder($request->order)->paginate(20);
+		$active_users = $user->getActiveUsers();
+		return view('topics.index', compact('topics','active_users'));
 	}
 
     public function show(Topic $topic,Request $request)

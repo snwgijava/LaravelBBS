@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Link;
+use App\Observers\LinkObserver;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+		Link::observe(LinkObserver::class);
 
-        //
+        //中文化设置
         Carbon::setLocale('zh');
     }
 

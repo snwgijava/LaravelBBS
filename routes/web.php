@@ -43,3 +43,6 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied','PagesController@permissionDenied')->name('permission-denied');
+
+
+Route::get('search','TopicsController@search')->name('search');

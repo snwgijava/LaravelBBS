@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -20,4 +21,6 @@ class PagesController extends Controller
         // 否则使用视图
         return view('pages.permission_denied');
     }
+
+
 }

@@ -223,3 +223,23 @@ body {
     }
   }
 }
+
+.search-page{
+  .search-p{
+    background-color: white;
+    padding: 30px 30px 30px 30px;
+  }
+  a {
+    color: #444444;
+  }
+  .meta {
+    font-size:0.9em;
+    color: #b3b3b3;
+    a {
+      color: #b3b3b3;
+    }
+  }
+  .badge {
+    background-color: #d8d8d8;
+  }
+}
